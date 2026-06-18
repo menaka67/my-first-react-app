@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment Tracker</title>
+</head>
+<body>
+
+<h1>📚 College Assignment Tracker</h1>
+
+<a href="/add">Add Assignment</a>
+
+<br><br>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Title</th>
+        <th>Subject</th>
+        <th>Due Date</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for a in assignments %}
+    <tr>
+        <td>{{ a[1] }}</td>
+        <td>{{ a[2] }}</td>
+        <td>{{ a[3] }}</td>
+        <td>{{ a[4] }}</td>
+        <td>
+            {% if a[4] == 'Pending' %}
+                <a href="/submit/{{ a[0] }}">Submit</a>
+            {% else %}
+                Done
+            {% endif %}
+            |
+            <a href="/delete/{{ a[0] }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
